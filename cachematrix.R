@@ -5,15 +5,15 @@
 ## call functions
 
 makeCacheMatrix <- function(x = matrix()) {
-  m<- NULL  ## m is the inverse of the set matrix
+  i<- NULL  ## i is the inverse of the set matrix
+  ## the set function is the typical mutator, when redefining x, the inverse is no longer valid
   set <- function(y) { 
     x<<-y
-    m<<- NULL
+    i<<- NULL
   }
-  ## x is the set matrix and the set function redefines it and sets m to NULL
-  get<-function() x ## calls set matrix
-  setInverse<- function(inverse) m<<-inverse ## defines the inverse matrix
-  getInverse<- function() m ## call the inverse matrix
+  get<-function() x ## the typical accessor function
+  setInverse<- function(inverse) i<<-inverse ## defines the inverse matrix
+  getInverse<- function() i ## accessor for the inverse matrix
   list(set=set, get=get, setInverse=setInverse, getInverse=getInverse)
 }
 
